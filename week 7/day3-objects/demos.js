@@ -148,3 +148,96 @@
   const list = [1, 2, 3];
   console.log([...list, 4], list.filter(n => n !== 2), list.map(n => (n === 3 ? 30 : n)));
 }
+
+const car = {
+  model: "2025",
+  tyres: 4,
+  color: "black",
+  move: function() {
+    console.log("moving!")
+  },
+  "engine model": "V8",
+  features: ["bullet-proof" , "4WD" , "proximity-sensor"],
+  displayCarDetails(type) {
+    return `This is a ${type} ${this.model} car`;
+  },
+
+  myCars: {
+    car1: "Mercedes",
+    car2: "BMW",
+    car3: "Buggati"
+  }
+}
+
+// Accessing an object
+car.color; // "black"
+car.model; // "2025"
+car.move(); // "moving!"
+car["engine model"]; // "V8"
+car.features[1]; // "4WD"
+console.log(car.displayCarDetails("SUV"));
+car.features.push("manual");
+car.myCars.car3; // "Buggati"
+car["myCars"].car2; // "BMW"
+car["myCars"]["car1"]; // "Mercedes"
+
+// Adding to the object
+car.mileage = 344000;
+
+//update an object property
+car.model = "2026";
+console.log(car);
+
+// Looping over objects
+
+
+const studentScores = {
+  maths: 80,
+  english: 56,
+  physics: 65,
+  biology: 39,
+  chemistry: 21,
+  studentBio: {
+    name: "Vura",
+    class: "SS2",
+    "class arm": "B"
+  }
+};
+
+Object.keys(studentScores);
+Object.values(studentScores);
+Object.entries(studentScores);
+delete studentScores.physics;
+console.log(studentScores);
+
+
+let studentResult = studentScores.studentBio.name + studentScores.english + "in English."
+console.log(studentResult);
+
+// Destructuring objects
+const {maths, english, physics} = studentScores; // destructuring
+console.log(maths, english, physics);
+let myResult = studentScores.studentBio.name + "scored" + maths + " in Maths."
+console.log(myResult);
+
+// Updating without mutating
+const user = {
+  name: "michael",
+  age: 37,
+  address: {
+    lga: "Khana",
+    town: "Bori",
+  },
+  married: true
+}
+user.age = 50;
+const oldUser = user; // referencing
+oldUser.name = "Joshua";
+const copyUser ={...user};
+copyUser.age = 98;
+console.log(copyUser);
+const updatedUser = {...user, age: 40}
+console.log(updatedUser);
+console.log(user);
+
+

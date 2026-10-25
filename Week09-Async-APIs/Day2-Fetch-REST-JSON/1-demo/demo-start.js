@@ -2,6 +2,7 @@
 // Day 2 Demo — Fetch, REST & JSON (START FILE)
 // =====================================================
 
+
 const BASE_URL = "https://jsonplaceholder.typicode.com";
 
 // =====================================================

@@ -54,6 +54,19 @@ const triple = function (n) {
 console.log(triple(4)); // 12
 
 // ---------- Demo 5: Arrow functions ----------
+function areaOfSquarelength() {
+return length * length;
+} 
+const areaOfRectangle = function(length, breadth) {
+return length * breadth;
+} 
+areaOfRectangle(5, 10);
+const areaOfTriangle = (base, height) => {
+return 1/2 * base * height;
+}
+areaOfTriangle(5, 10);
+const n
+
 const square = (n) => n * n;             // implicit return
 const addArrow = (a, b) => a + b;
 const greetArrow = name => `Hi ${name}`;  // one param: () optional
@@ -70,7 +83,14 @@ const broken = (n) => { n * 2 };
 console.log(broken(5)); // undefined
 
 // ---------- Demo 6: Default parameters ----------
-const greetDefault = (name = "friend", greeting = "Hello") => `${greeting}, ${name}!`;
+const sendMessage = (message, sender, name) => {
+  return `Happy birthday ${name}, ${message}, from ${sender}`;
+}
+
+
+const greetDefault = (name = "friend", greeting = "Hello") => {
+  return `${greeting}, ${name}!`;
+} 
 console.log(greetDefault());                // "Hello, friend!"
 console.log(greetDefault("Chidi"));         // "Hello, Chidi!"
 console.log(greetDefault("Chidi", "Bawo")); // "Bawo, Chidi!"

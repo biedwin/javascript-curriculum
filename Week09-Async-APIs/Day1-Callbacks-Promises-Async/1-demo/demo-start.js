@@ -42,6 +42,24 @@ function runCallbacks() {
 // =====================================================
 // PART 2 — Promises
 // =====================================================
+// pending means: the order is on its way, and you don't knowthe outcome yet
+// Fulfilled means: the package arrived and got what you ordered.
+// Rejected means: something went wrong(out of stock, lost in delivery).
+
+// A Promise in Javascript is an object representing a result that isn't ready yet.
+
+// TYPICAL EXAMPLE
+
+fetch("https://api.example.com/user")
+.then(function(response) {
+  return response.json();
+})
+.then(function(data) {
+  console.log(data);
+})
+.catch(function(error) {
+  console.log("Something went wrong:", error);
+});
 // TODO: takeOrderP(dish) → returns a Promise that resolves after 1s
 
 // TODO: cookFoodP(dish, hasRice = true) → resolves after 2s,
@@ -52,11 +70,49 @@ function runCallbacks() {
 function runPromises() {
   log("--- Promises ---");
   // TODO: chain with .then(), handle errors with .catch(), end with .finally()
+  takeOrderProm("Jellof Rice")
+  .then((order) => cookFoodprom(order)) // return the next promise
+  .then((cookedMeal) => serveFood(cookedMeal))
+  .then(() => log("Enjoy your meal!"))
+  .catch((error) => log(`${error.message}`)) // .catch() handles errors from any step
+  .finally(() => log("kitchen clean up"));
 }
 
 // =====================================================
 // PART 3 — async/await
 // =====================================================
+//Example1
+async function showDetails() {
+  try {
+    let user = await getUsser();
+    let orders = await getOrders(user);
+    let details = await getOrderDetails(orders[0]);
+    console.log(details);
+  } catch (error) {
+    console.log("Error:", error);
+  }
+};
+
+// Example 2
+// With .then()
+fucntion showUser() {
+  fetch("https://api.example.com/user")
+  .then(function(response) {
+    return response.json();
+  })
+  .then(function(data) {
+    console.log(data);
+  })
+}
+
+//With async/await
+async function showUser() {
+  let response = await fetch("https://api.example.com/user")
+  let data = await response.json();
+  console.log(data);
+}
+
+
 async function runAsyncAwait() {
   log("--- async/await ---");
   // TODO: await each step inside try/catch

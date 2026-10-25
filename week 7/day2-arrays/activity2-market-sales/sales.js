@@ -14,25 +14,26 @@ const sales = [
 
 // 1. forEach: print each line as "Rice (5kg): 12 sold"
 //    ({ item, qty }) unpacks the object. Full lesson on Monday!
-sales.forEach(({ item, qty }) => {
+sales.forEach((product) => {
   // TODO
+  console.log(`${product.item}: ${product.qty} sold`);
 });
 
 // 2. map: revenue per item (price × qty)
-const revenues = sales.map((s) => {
-  // TODO: return price × qty
+const revenues = sales.map((product) => {
+  return product.price * product.qty
 });
 console.log("Revenues:", revenues);
 
 // 3. filter: unsold items (qty is 0)
-const unsold = sales.filter((s) => {
-  // TODO: return true for items with qty 0
+const unsold = sales.filter((product) => {
+  return product.qty === 0;
 });
 console.log("Unsold:", unsold);
 
 // 4. reduce: total revenue for the day
-const totalRevenue = sales.reduce((sum, s) => {
-  // TODO: return the new running total
+const totalRevenue = sales.reduce((sum, product) => {
+ return sum + (product.price * product.qty)
   return sum;
 }, 0);
 console.log("Total revenue:", totalRevenue);
@@ -45,8 +46,8 @@ console.log("Best seller:", best.item);
 
 // 6. Chain: names of items that earned over ₦30,000
 const bigEarners = sales
-  .filter((s) => false) // TODO: fix the condition
-  .map((s) => s);       // TODO: return just the item name
+  .filter((product) => (product.price * product.qty) > 30000) // TODO: fix the condition
+  .map((product) => product.item);       // TODO: return just the item name
 console.log("Over ₦30,000:", bigEarners);
 
 // Check your answers:

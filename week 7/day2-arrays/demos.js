@@ -21,6 +21,69 @@ fruits.splice(1, 1);     console.log(fruits); // remove 1 item at index 1 ("mang
 const mixed = ["Ada", 25, true, null]; // any types
 console.log(mixed);
 
+const students = ["caleb", "zina", "elvis", "vure", "vera", "emma","favour"];
+students.at(-1);
+students.indexOf("zina"),
+students.includes("elvis");
+
+const items = [true, 500, "leah", null, 81, false, "joshua", ["saviour", 22, undefined, "101"], {age: 45}, ["caleb"]];
+items[7][0]; //"saviour"
+items[3]; // "null"
+//how to add and remove elements/items from an array
+items.push("ADA");
+items.pop("LEAH") //remove an item to the end of an array
+items.unshift("3789"); //add  item to the start/beginning of an array
+items.shift(); // removes an item from the start/beginning of an array
+items.splice(1, 2);
+
+const deletedItems = items.splice(1, 2);
+console.log(items);
+
+const  evenNumbers = [2, 4, 6, 8];
+const newNumbs = evenNumbers; // this is referencing an array and not copying an array
+newNumbs.push(10); // [2, 4, 6, 8, 10]
+console.log(eveNumbers); // [2, 4, 6, 8, 10]
+
+// copy an array
+const copyOfEven = [...evenNumbers]; //.. is called spread operator
+copyOfEven.push(12);
+console.log(evenNumbers); // [2, 4, 6, 8, 10]
+console.log(copyOfEven); // [2, 4, 6, 8, 10, 12]
+
+// forEach & map
+// use forEach() if you want to perform an action without generating a new array
+// use map() if you want to transform an array and generate a new array
+const names = ["Ada", "Bola", "Ezekiel"];
+names.forEach(name => {
+  console.log(`welcome, ${name}`);
+})  
+
+const itemPrices = [122, 340, 20];
+const newPrices = itemPrice.map(price => {
+  return price * 2;
+});
+console.log(newPrices);
+
+// filter
+const cart = [23, 56, 87, 11, 5, 33, 60, 45];
+cart.filter(item => {
+  return item <= 50;
+});
+
+// Arrays of objects
+const shoppingCart = [
+  {name: "palm oil", price: 3000, qty: 4, available: true},
+  {name: "honey", price: 5000, qty: 6, available: true},
+  {name: "lotion", price: 1800, qty: 4, available: false},
+  {name: "apple", price: 600, qty: 2, available: true},
+  {name: "car battery", price: 38000, qty: 1, available: false},
+];
+
+shoppingCart[2].name; //"lotion"
+
+const availableItems = shoppingCart.filter(item => item.available).map(item => item.name);
+console.log(availableItems);
+
 // ---------- Demo 2: Arrays are references ----------
 const a = [1, 2, 3];
 const b = a;        // same array, two labels
@@ -95,3 +158,4 @@ console.log(cartTotal); // 25000
 
 const inStockNames = cart.filter(i => i.inStock).map(i => i.name);
 console.log(inStockNames); // ["Keyboard", "Mouse"]
+
